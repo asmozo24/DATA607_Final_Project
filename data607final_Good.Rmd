@@ -1,39 +1,18 @@
 ---
-title: |
-  <center> The City University of New York School of Professional Studies </center>
-  <br>
-  <center> Data Acquisition and Management (DATA 607) </center>
-  <br>  
-  <center> Final Project </center>
-  <center> Data Insights to Improve school Education System </center>
-  <br>
-  <center> Alexis Mekueko and DH Kim</center>
-  <center> email:  alexis.mekueko08@login.cuny.edu </center> <br>
-author: |
-date: |
-  <center> 12/05/2020 </center><br>
+title: "Final Project: Data Insights to Improve school Education System\nData Acquisition and Management (DATA 607)"
+subtitle: "Alexis Mekueko"
+description: |
+
+author: 
+- "The City University of New York School of Professional Studies"
+- "email: alexis.mekueko08@login.cuny.edu"
+date: "12/9/2020"
 output:
-  prettydoc::html_pretty:
-    theme: architect 
-    highlight: github
-    df_print: paged
-    smooth_scroll: yes
-    toc_collapsed: yes
-    toc_depth: 2
-    toc_float: yes
- ioslides_presentation:
-    self_contained: true
-    widescreen: true
-    smaller: true
-  pdf_document:
-    df_print: paged
-    toc: yes
-    toc_depth: '2'
+  pdf_document: default
+
 ---
 
-
-
-```{r global_options, include=FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -72,19 +51,29 @@ library(DATA606)
 ```
 
 
-Github Link: https://github.com/asmozo24/DATA607_Final_Project
-
-Web link: https://rpubs.com/amekueko/697306
-
 
 ## Introduction
-Many students failed in school not because of thier intelligence. There are numerous factors that contribute to students success. In other words, students success in school relies upon on the ability of the school education system to take appropriate measures on these factors. These factors are : weekly studying time, extra-curricular activities, travel time to school, family educational support, student desire to pursue higher education, companionship, parents'job type, etc. Therefore, in this project, we interested in studying these factors to determine any correlation that could lead to students failure in a taken course. If none, then we would like to determine the factors which contribute to success. This is done in order for the school education system to keep track of success and to improve the factors that negatively impact students success.
 
-## Benefits
-The interest in experimental study related to school will have the advantage to help schools’ officials in decision making in term of improving school education system. This project is seeking to make the collected data about ("GP" - Gabriel Pereira or "MS" - Mousinho da Silveira) schools speaks or reveals useful information. This experiemental study aims to help school's officials in planning strategy for better school education system.  Ultimately, I plan to become a consultant using my skills as data scientist in various domain of the society to present meaningful report to government entities, companies, and organizations to help them in decision making. So, this project will contribute to building skills necessary for one to be successful in data science.
+- Many students failed in school not because of thier intelligence. 
+- There are numerous factors that contribute to students success. 
+- In other words, students success in school relies upon on the ability of the school education system to take appropriate measures on these factors. 
+- These factors are : weekly studying time, extra-curricular activities, travel time to school, family educational support, student desire to pursue higher education, companionship, parents'job type, etc. 
+- Therefore, in this project, we interested in studying these factors to determine any correlation that could lead to students failure in a taken course. 
+- If none, then we would like to determine the factors which contribute to success. 
+- This is done in order for the school education system to keep track of success and to improve the factors that negatively impact students success.
+
+Github Link: https://github.com/asmozo24/DATA607_Final_Project
+
+Web link: https://rpubs.com/amekueko/702297
+
+
 
 ## Research question
-Do you students from Gabriel Pereira (GP) school do better in Math course than those from Mousinho da Silveira (MS) school? We could also explore the corelation between factors time and students performance. We could also verify a popular assumption out there. For instance, there are some studies out there suggesting that the amount of study time likely affects students' performance. Let's verify this assumption in this project. The question being, do students studying at least 10hrs weekly do well in Math course than those spending lesser time? 
+
+- Do you students from Gabriel Pereira (GP) school do better in Math course than those from Mousinho da Silveira (MS) school? 
+- We could also explore the corelation between factors time and students performance. We could also verify a popular assumption out there. 
+- For instance, there are some studies out there suggesting that the amount of study time likely affects students' performance. Let's verify this assumption in this project.
+- The question being, do students studying at least 10hrs weekly do well in Math course than those spending lesser time? 
 
 
 <ol>
@@ -94,10 +83,12 @@ Do you students from Gabriel Pereira (GP) school do better in Math course than t
 Data is collected or made available by archive.ics.uci.edu: The UCI Machine Learning Repository is a collection of databases, domain theories, and data generators that are used by the machine learning community for the empirical analysis of machine learning algorithms. The archive was created as an ftp archive in 1987 by David Aha and fellow graduate students at UC Irvine. The current version of the web site was designed in 2007 by Arthur Asuncion and David Newman, and this project is in collaboration with Rexa.info at the University of Massachusetts Amherst. Funding support from the National Science Foundation is gratefully acknowledged. 
 
 ### Data source
-We found some interesting dataset from -> data source: https://archive.ics.uci.edu/ml/machine-learning-databases/00320/. This data is about a study on students(395) taking math or/and portuguese language course. Each case represents a student at one of the two schools ("GP" - Gabriel Pereira or "MS" - Mousinho da Silveira). There are 395 observations in the given dataset. The data is pretty rich with a txt file that described all variables in the data. therefore there is no need to rename the column. The orignal data format is comma delimited and rendering from R was not easy. So, we used excel with one attemp to fix it. We are interested in the student taking Math course.  with 33 variables. Data available --> https://github.com/asmozo24/DATA606_Project_Proposal
+We found some interesting dataset from -> data source: https://archive.ics.uci.edu/ml/machine-learning-databases/00320/. This data is about a study on students(395) taking math or/and portuguese language course. Each case represents a student at one of the two schools ("GP" - Gabriel Pereira or "MS" - Mousinho da Silveira). There are 395 observations in the given dataset. The data is pretty rich with a txt file that described all variables in the data. therefore there is no need to rename the column. The orignal data format is comma delimited and rendering from R was not easy. So, we used excel with one attemp to fix it. We are interested in the student taking Math course.  with 33 variables. 
+
+- Data available --> https://github.com/asmozo24/DATA606_Project_Proposal
 
 Using R to acquire data
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 
 # load the text file which has the description of all the variable.
 variable_details <- read.delim("https://raw.githubusercontent.com/asmozo24/DATA607_Final_Project/main/student.txt", stringsAsFactors=FALSE)
@@ -107,27 +98,27 @@ student_portuguese <- read.csv("https://raw.githubusercontent.com/asmozo24/DATA6
 ```
 
 Using SQL to acquire data
-<!-- # ```{r, connection to sql} -->
-<!-- #  -->
-<!-- #  -->
-<!-- # # establishing the connection to SQL server to access db -->
-<!-- # con <- dbConnect(odbc(),  -->
-<!-- #   # server type -->
-<!-- #   Driver = "SQL Server",  -->
-<!-- #   #server name -->
-<!-- #   Server = "ATM\\ATMSERVER", -->
-<!-- #   # this is one of the db I want to import -->
-<!-- #   Database = "Final_ProjectDB",  -->
-<!-- #   UID = "Alex", -->
-<!-- #   # password required -->
-<!-- #   PWD = rstudioapi::askForPassword("Database password"),  -->
-<!-- #   ort = 1433) -->
-<!-- #  -->
-<!-- #   #dbListFields(con, "student_math") -->
-<!-- #   #student_math <- dbReadTable(con, "student_math")  -->
-<!-- # #barplot(table(Customer_Location$Country, color = rainbow()))  -->
-<!-- #  -->
-<!-- # ``` -->
+# ```{r, connection to sql}
+#
+#
+# # establishing the connection to SQL server to access db
+# con <- dbConnect(odbc(),
+#   # server type
+#   Driver = "SQL Server",
+#   #server name
+#   Server = "ATM\\ATMSERVER",
+#   # this is one of the db I want to import
+#   Database = "Final_ProjectDB",
+#   UID = "Alex",
+#   # password required
+#   PWD = rstudioapi::askForPassword("Database password"),
+#   ort = 1433)
+#
+#   #dbListFields(con, "student_math")
+#   #student_math <- dbReadTable(con, "student_math")
+# #barplot(table(Customer_Location$Country, color = rainbow()))
+#
+# ```
 
 
 ## Data Preparation / Data Wrangling
@@ -136,7 +127,7 @@ Using SQL to acquire data
 
 What is the structure of data?
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 
 glimpse(student_math)
 
@@ -158,7 +149,7 @@ sum(is.na(student_portuguese))
 ## Explore Data
 
 Let's take a look at the data frame...
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 
 # let's create a dummy variable for the purporse of data visualization
 VarFunc <- function(df, x){
@@ -183,8 +174,8 @@ Var2Func <- function(df, x){
 student_math$Var <-VarFunc(student_math, student_math$G1)
 student_portuguese$Var <-VarFunc(student_portuguese, student_portuguese$G1)
 student_math$Var2 <-Var2Func(student_math, student_math$G1)
-head(student_math)
-head(student_portuguese)
+#head(student_math)
+#head(student_portuguese)
 
 ```
 
@@ -195,8 +186,9 @@ head(student_portuguese)
     G2: second period grade (numeric: from 0 to 20)
     G3: final grade (numeric: from 0 to 20)
 
+## Visualize students distribution per school in Math Course
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 
 describe(student_math$G3)
 #summary(student_math$G3)
@@ -213,7 +205,7 @@ barplot(table(student_math$school), main = "Students in Math Course Distribution
 
 - Age and sex distribution in the Math course
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 ggplot(student_math, aes(x= age, group=sex)) + 
     geom_bar(aes(y = ..prop.., fill = factor(..x..)), stat="count") +
     geom_text(aes( label = scales::percent(..prop..),
@@ -230,9 +222,9 @@ ggplot(student_math, aes(x= age, group=sex)) +
 ```
 
 
-- First, we need to organize the data frame into two data frame that represents the two schools.
+## - First, we need to organize the data frame into two data frame that represents the two schools.
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 
 gradeFunc <- function(df, grade){
   for (i in 1:(nrow(df))) {
@@ -265,7 +257,7 @@ view(student_math)
 # le't organize data frame
 student_math_MS <- student_math %>%
   filter ( school == "MS") # select(student_math, )
-head(student_math_MS)
+#head(student_math_MS)
 student_math_GP <- student_math %>%
   filter ( school == "GP") # select(student_math, )
 student_portuguese_MS <- student_portuguese %>%
@@ -308,7 +300,7 @@ boxplot(G1~school, data = student_math, xlab = "GP = Gabriel Pereira School, MS 
 
 * Students Math Exam1 result distribution from  Gabriel Pereira School
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 
   ggplot(student_math_GP, aes(x= (G1))) + 
     geom_bar(aes(y = ..prop.., fill = factor(..x..)), stat="count") +
@@ -340,7 +332,7 @@ boxplot(G1~school, data = student_math, xlab = "GP = Gabriel Pereira School, MS 
 <!-- # ``` -->
 
 
-- Let's see the math exam1 graded from the two schools
+## - Let's see the math exam1 graded from the two schools
 
 ```{r, echo=FALSE}
 #barplot(table(student_math_GP$grade1), main = "Students Math Exam1 Graded Distribution from Gabriel Pereira School", xlab = " Math Exam 1 Graded", ylab = "Students",  col = rainbow(6)) #, label = scales::percent(prop.table(student_math_GP$grade1))) #, width = c(0.4,0.1) ) #~ student_math$studytime ) #, student_math$sex)
@@ -391,8 +383,13 @@ ggplot(student_math, aes(x= grade3, group=school)) +
 ```
 
 
-- The results from the two Math Exams don't look good. 
-- Let's see the Portuguese Final grade from the two schools.
+- The results from the two Math Exams don't look good.
+
+```{r}
+
+```
+
+## Let's see the Portuguese Final grade from the two schools.
 
 
 <!-- ```{r, echo=FALSE} -->
@@ -444,7 +441,7 @@ ggplot(student_portuguese, aes(x= grade3, group=school)) +
 - Let's see Multiple comparison or group barplots to show grade 1, 2 and 3 or G1, G2, G3
 - To see overall performance trend from grade 1 to final grade 
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 
 #Group all the grade (grade 1, grade 2, grade 3) in one plot
 all_Math_Grade <- select(student_math_GP, grade1, grade2, grade3)
@@ -466,7 +463,7 @@ barplot(as.matrix(table(select(student_math_GP, grade1, grade2, grade3))), besid
 
 ```
 
-- Stats summary from Gabriel Pereira School
+## - Stats summary from Gabriel Pereira School
 ```{r, echo=FALSE}
 
 # this part answer the question which school does better in Math
@@ -484,7 +481,7 @@ summary(student_math_MS$G3)
 ```
 
 
-- Let's visualize the average score in Math course from the two schools.
+## - Let's visualize the average score in Math course from the two schools.
 
 ```{r, echo=FALSE}
 plotmeans(G3~school, data = student_math, main = "Average Students Final Grade in Math from GP and MS", xlab = "GP = Gabriel Pereira School, MS = Mousinho da Silveira School", ylab = "Math Final Grade on 20 points", frame = FALSE)
@@ -493,8 +490,8 @@ plotmeans(G3~school, data = student_math, main = "Average Students Final Grade i
 
 
 ```{r, echo=FALSE}
-#boxplot(G3~school, data = student_math, xlab = "GP = Gabriel Pereira School, MS = Mousinho da Silveira School",
-#   ylab = "Math Final Grade on 20 points", main = "Students Math Final Grade per School" , col = c("green","purple"))
+boxplot(G3~school, data = student_math, xlab = "GP = Gabriel Pereira School, MS = Mousinho da Silveira School",
+   ylab = "Math Final Grade on 20 points", main = "Students Math Final Grade per School" , col = c("green","purple"))
 
 #describe(student_portuguese_GP$grade3)
 #describe(student_portuguese_MS$grade3)
@@ -508,9 +505,14 @@ plotmeans(G3~school, data = student_math, main = "Average Students Final Grade i
 ## - Correlation between amount of study time and result
 
 Conducting a hypothesis test to evaluate whether the average grade is different for those who study at least ten times a week than those who don’t. 
-- H_null: there is no difference in the average grade for those who study at at least ten times a week than those who don’t. - H_alt: there is difference in the average grade for those who study at at least ten times a week than those who don’t.
-- case = students enrolled in Math course 
-- sample is all students from both school (GP and MS)
+
+- H_null: there is no difference in the average grade for those who study at at least ten times a week than those who don’t.
+
+- H_alt: there is difference in the average grade for those who study at at least ten times a week than those who don’t.
+
+- case = students enrolled in Math course. 
+
+- sample is all students from both school (GP and MS).
 
 ```{r, echo=FALSE}
 
@@ -532,7 +534,7 @@ boxplot(G3 ~ studyTime10, data = student_math1, xlab = "Students Weekly Study Ti
 
 - Let's see the final grade ratio between students who study 10+ hrs a week and those who don't in math course
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 #cat ("Let's see the final grade ratio between students who study 10+ hrs a week and those who don't in math course")
 student_math1 %>%
   group_by(studyTime10) %>%
@@ -545,7 +547,7 @@ study10Less <- student_math1 %>%
   filter(studyTime10 == "no" ) 
 ```
 
-- Let's see the statical information about students final grade in Math based on 10+hrs weekly study time
+## - Let's see the statical information about students final grade in Math based on 10+hrs weekly study time
 ```{r, echo=FALSE}
 #cat("Let's see the statical information about students final grade in Math based on 10+hrs weekly study time")  
 describe(study10plus$grade3)
@@ -553,7 +555,7 @@ describe(study10plus$grade3)
 ```
 
 
-Let's visualize the Math final grade distribution from the two schools based on 10+hrs weekly study time
+- Let's visualize the Math final grade distribution from the two schools based on 10+hrs weekly study time
 ```{r, echo=FALSE}
 #cat("\nLet's see the math final grade distribution from the two schools based on 10+hrs weekly study time\n")
 ggplot(study10plus, aes(x= grade3, group=school)) + 
@@ -567,7 +569,7 @@ ggplot(study10plus, aes(x= grade3, group=school)) +
 
 ```
 
-- Statical information about students final grade in Math based on less than 10hrs Weekly study time
+## - Statistical information about students final grade in Math based on less than 10hrs Weekly study time
 
 ```{r, echo=FALSE}
 
@@ -588,7 +590,7 @@ ggplot(study10Less, aes(x= grade3, group=school)) +
 # There is an observed difference, but is this difference statistically significant? In order to answer this question we will conduct a hypothesis test.
 ```
 
-- Overall students performance in Math course from the two school
+## - Overall students performance in Math course from the two school
 
 ```{r, echo=FALSE}
 ggplot(study10Less, aes(x= grade3, group=Var)) + 
@@ -604,7 +606,7 @@ ggplot(study10Less, aes(x= grade3, group=Var)) +
 
 - Computing the hypothesis test.
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 # This can be rewrite as a function
 
 n_yes <- nrow(study10plus) 
@@ -655,6 +657,12 @@ The p-value = 0.05 < alpha (0.1), thus we reject the null hypothesis. Thus, ther
 - Shockingly, there is no student from MS who studies at least 10hrs in a week.
 - Overall, students from GP did better in Math course than those from MS.
 
+## Benefits
+
+- The interest in experimental study related to school will have the advantage to help schools’ officials in decision making in term of improving school education system. 
+- This project is seeking to make the collected data about ("GP" - Gabriel Pereira or "MS" - Mousinho da Silveira) schools speaks or reveals useful information.
+- This experiemental study aims to help school's officials in planning strategy for better school education system.  Ultimately, I plan to become a consultant using my skills as data scientist in various domain of the society to present meaningful report to government entities, companies, and organizations to help them in decision making. 
+- So, this project will contribute to building skills necessary for one to be successful in data science.
 
 ## Challenges
 
@@ -665,6 +673,7 @@ The p-value = 0.05 < alpha (0.1), thus we reject the null hypothesis. Thus, ther
 - Some times a function works, describe(), describeBy and later does not work.
 - Struggled how to do a better project presentation in Rmarkdown.
 - Dealing with slow computer during this project was little painful.
+
 
 
 
@@ -686,4 +695,3 @@ The p-value = 0.05 < alpha (0.1), thus we reject the null hypothesis. Thus, ther
 7. https://www.r-graph-gallery.com/all-graphs.html
 
 8. http://www.sthda.com/english/wiki/ggplot2-barplot-easy-bar-graphs-in-r-software-using-ggplot2
-
